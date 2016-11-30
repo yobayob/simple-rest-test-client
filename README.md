@@ -1,5 +1,7 @@
 # simple-rest-test-client
+
 Microframework for test rest api
+Wrapper on python unittest for test api. Basic asserts func for response and automatic generation test func (DDT).
 
 ## Example usage
 
@@ -16,8 +18,8 @@ data = [{
         Basic HTTP asserts
         """
     
-        "status_code": 200, # default value
-        "mime_type": "application/json" # default value
+        "status_code": 200, # default value, not necessary define
+        "mime_type": "application/json" # default value, not necessary define
         
         """
         Check schema & answer
@@ -38,7 +40,7 @@ data = [{
         }
     }
 },
-... 
+... # + other test fixture
 ]
 ```
 
@@ -64,3 +66,5 @@ class TestStatusCode(BaseTestCase):
         return Client(self.method, self.url, json=json, **kwargs)
 
 ```
+
+### see test_app for example
