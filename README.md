@@ -5,7 +5,7 @@ Microframework for test rest api
 
 ### generic data for request
 
-```json
+```
 data = [{
     "json": {
         "arg": "foo"
