@@ -1,7 +1,48 @@
 # simple-rest-test-client
 Microframework for test rest api
 
-# USAGE
+## USAGE
+
+### generic data for request
+
+```json
+data = [{
+    "json": {
+        "arg": "foo"
+    },
+    "expect": {
+    
+        """
+        Basic HTTP asserts
+        """
+    
+        "status_code": 200, # default value
+        "mime_type": "application/json" # default value
+        
+        """
+        Check schema & answer
+        """
+        
+        "answer": {  # see also http://validatorpy.readthedocs.io/en/latest/
+            "ans": [Required, Equals("bar")
+        },
+        
+        "schema":{ # see also https://pypi.python.org/pypi/jsonschema
+            "type": "object",
+            "required": ["ans"],
+            "properties": {
+                "ans": {
+                    "type": "string",
+                }
+            }
+        }
+    }
+},
+... 
+]
+```
+
+### create test class
 
 ```python
 
