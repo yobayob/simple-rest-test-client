@@ -1,9 +1,9 @@
 # simple-rest-test-client
 Microframework for test rest api
 
-## USAGE
+## Example usage
 
-### generic data for request
+### Generic data for request
 
 ```
 data = [{
