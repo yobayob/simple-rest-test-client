@@ -7,7 +7,7 @@ from common.service import Service
 class TestStatusCode(BaseTestCase):
     method = 'POST'
     url = '/api/status_code/'
-    request = data
+    requests = data
 
     @classmethod
     def setUpClass(cls):
