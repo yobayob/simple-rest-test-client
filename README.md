@@ -7,7 +7,10 @@ Wrapper on python unittest for test api. Basic asserts func for response and aut
 
 ### Generic data for request
 
-```
+```python
+
+import validator
+
 data = [{
     "json": {
         "arg": "foo"
