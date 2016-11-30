@@ -61,8 +61,8 @@ class BaseTestCase(TestCase):
     url = '/'
     method = 'GET'
     json = {}
-    request = []
-    data_lists = ['request']
+    requests = []
+    data_lists = ['requests']
 
     def client(self, **kwargs):
         """
