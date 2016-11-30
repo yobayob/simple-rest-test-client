@@ -1,7 +1,7 @@
 import requests
 from config import settings
 from jsonschema import Draft4Validator, validate, ValidationError
-from urlparse import urlparse, urljoin
+from urlparse import urljoin
 from validator import validate as validate_response
 
 
@@ -20,13 +20,12 @@ class ValidateResponse(object):
             return self.response.json()
         except ValueError:
             return self.response.text
-    """
+
     def assert_error_codes(self):
         resp_error_codes = [item['code'] for item in self.response.json()['errors']]
         if len(resp_error_codes) == len(self.error_codes) \
                 or set(resp_error_codes) == set(self.error_codes):
             self.fails.append("Incorrect list of errors %s") % self.response.json()['errors']
-    """
 
     def assert_status_code(self):
         if not self.response.status_code == self.status_code:

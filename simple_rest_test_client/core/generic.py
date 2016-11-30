@@ -39,7 +39,7 @@ class MetaTestMixin(type):
         cls.setUpAttr()
         for nd in cls.get_data_lists():
             data = getattr(cls, nd, False)
-            if not data:
+            if data is False:
                 raise Exception('Not data for request')
             for i in range(len(data)):
                 test_name = "test_%s_request_%s" % (nd, i)

@@ -1,17 +1,18 @@
 # -*- coding: utf-8 -*-
 import sys
 import unittest
-from fabric.api import *
+from fabric.api import lcd, local
+from simple_rest_test_client.core.config import settings
 from simple_rest_test_client.core.generic import Client
 import time
 
 
 class TestEvents(unittest.TextTestResult):
     def startTestRun(self):
-        pass
+        Service().start()
 
     def stopTestRun(self):
-        pass
+        Service().stop()
 
 
 class Service(object):
@@ -19,33 +20,32 @@ class Service(object):
     managment cls for application
     """
 
-    def init(self):
+    def init(self, branch):
         """
         init & deploy project
         """
-        # Create dir and clone project
-        if os.path.isfile(cnf.GOPATH) is False:
-            local('rm -rf ' + cnf.GOPATH)
-            local('mkdir -p ' + cnf.PROJECT_DIR)
-            with lcd(cnf.PROJECT_DIR):
-                local('git clone ' + cnf.GIT + ' .')
-
-        with lcd(cnf.PROJECT_DIR):
+        local('rm -rf %s' % settings.PROJECT_DIR)
+        local('mkdir -p %s' % settings.PROJECT_DIR)
+        with lcd(settings.PROJECT_DIR):
+            local('git clone %s .' % settings.GIT)
             local('git fetch')
-            local('git checkout ' + branch)
+            local('git checkout %s' % branch)
+            local('virtualenv -p python3.5 .venv')
+            local('.venv/bin/pip3.5 install -r requirements.txt')
         return self
 
     def clear(self):
         """
         clear data for testing
         """
+        Client('DELETE', '/mock/reset/')
         return self
 
     def start(self):
         with lcd(settings.PROJECT_DIR):
             if '--no-screen' not in sys.argv:
-                local('screen -dmS ms_comment_test ./bin run')
-                for i in range(15):
+                local('screen -dmS mock .venv/bin/python3.5 manage.py run')
+                for i in range(2):
                     try:
                         r = Client('GET', '/api/ping/')
                     except:
@@ -55,9 +55,9 @@ class Service(object):
                             break
                     time.sleep(1)
             else:
-                local('./bin run')
+                local('.venv/bin/python3.5 manage.py run')
         return self
 
     def stop(self):
-        local('screen -S ms_comment_test -X quit')
+        local('screen -S mock -X quit')
         return self

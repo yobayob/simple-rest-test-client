@@ -3,27 +3,19 @@
 import sys
 import unittest
 import xmlrunner
-from common.service import Service, TestEvents, set_envs
+import os
 
 if __name__ == "__main__":
 
-    set_envs()
+    os.environ.setdefault("SRTC_CONF", "settings")
+
+    from common.service import Service, TestEvents
 
     if len(sys.argv) > 1 and sys.argv[1] == 'init':
         branch = 'master'
         if len(sys.argv) > 2:
             branch = sys.argv[2]
         Service().init(branch=branch)
-    elif len(sys.argv) > 1 and sys.argv[1] == 'migrate':
-        Service().migrate()
-
-    elif len(sys.argv) > 1 and sys.argv[1] == 'pull':
-        kwargs = {}
-        if len(sys.argv) > 2:
-            kwargs.update({
-                'branch': sys.argv[2]
-            })
-        Service().pull(**kwargs)
 
     elif len(sys.argv) > 1 and sys.argv[1] in ['start', 'run', 'runserver']:
         Service().start()
