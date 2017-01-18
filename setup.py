@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='strc',
-    version='0.0.31',
+    version='0.0.32',
     description='Micro framework for testing REST API',
     author='yobayob',
     namespace_packages=['simple_rest_test_client'],
