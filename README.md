@@ -71,3 +71,20 @@ class TestStatusCode(BaseTestCase):
 ```
 
 see test_app for example
+
+## Usage with pytest
+
+create conftest.py 
+~~~
+import os
+os.environ.setdefault("SRTC_CONF", "settings")
+~~~
+
+create settings.py
+~~~
+BASE_URL = 'http://127.0.0.1:5000'
+
+AUTH_TYPE = 'token-service'
+AUTH_TOKEN = 'test'
+AUTH_SERVICE = 'test'
+~~~
