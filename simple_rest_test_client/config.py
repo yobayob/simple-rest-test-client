@@ -1,7 +1,7 @@
 import os
 from importlib import *
-import global_settings
 
+import global_settings
 
 ENVIRONMENT_VARIABLE = 'SRTC_CONF'
 
