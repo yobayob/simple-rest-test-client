@@ -1,7 +1,8 @@
-from simple_rest_test_client.core.generic import BaseTestCase
-from simple_rest_test_client.core.requests_api import Client
-from fixture import data, mock
 from common.service import Service
+
+from fixture import data, mock
+from simple_rest_test_client.generic import BaseTestCase
+from simple_rest_test_client.requests_api import Client
 
 
 class TestStatusCode(BaseTestCase):
