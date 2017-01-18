@@ -5,7 +5,7 @@ setup(
     version='0.0.31',
     description='Micro framework for testing REST API',
     author='yobayob',
-    namespace_packages=['strc'],
+    namespace_packages=['simple_rest_test_client'],
     packages=find_packages(),
     platforms='any',
     zip_safe=False,
