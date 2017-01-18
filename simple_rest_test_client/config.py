@@ -1,7 +1,7 @@
 import os
 from importlib import *
 
-import global_settings
+import simple_rest_test_client.global_settings
 
 ENVIRONMENT_VARIABLE = 'SRTC_CONF'
 
@@ -9,9 +9,9 @@ ENVIRONMENT_VARIABLE = 'SRTC_CONF'
 class Settings(object):
 
     def __init__(self):
-        for setting in dir(global_settings):
+        for setting in dir(simple_rest_test_client.global_settings):
             if setting.isupper():
-                setattr(self, setting, getattr(global_settings, setting))
+                setattr(self, setting, getattr(simple_rest_test_client.global_settings, setting))
 
 
 class LazySettings(object):

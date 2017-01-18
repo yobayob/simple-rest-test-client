@@ -1,6 +1,6 @@
 from unittest import TestCase
-from config import settings
-from requests_api import Client
+
+from simple_rest_test_client.requests_api import Client
 
 
 class MetaTestMixin(type):

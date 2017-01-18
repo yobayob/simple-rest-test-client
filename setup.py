@@ -1,11 +1,11 @@
 from setuptools import setup, find_packages
 
 setup(
-    name='srtc',
+    name='strc',
     version='0.0.3',
     description='Micro framework for testing REST API',
     author='yobayob',
-    namespace_packages=['srtc'],
+    namespace_packages=['strc'],
     packages=find_packages(),
     platforms='any',
     zip_safe=False,

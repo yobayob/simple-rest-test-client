@@ -1,10 +1,12 @@
 # -*- coding: utf-8 -*-
 import sys
-import unittest
-from fabric.api import lcd, local
-from simple_rest_test_client.core.config import settings
-from simple_rest_test_client.core.generic import Client
 import time
+import unittest
+
+from fabric.api import lcd, local
+
+from simple_rest_test_client.config import settings
+from simple_rest_test_client.generic import Client
 
 
 class TestEvents(unittest.TextTestResult):

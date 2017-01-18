@@ -1,8 +1,10 @@
-import requests
-from config import settings
-from jsonschema import Draft4Validator, validate, ValidationError
 from urlparse import urljoin
+
+import requests
+from jsonschema import Draft4Validator, validate, ValidationError
 from validator import validate as validate_response
+
+from simple_rest_test_client.config import settings
 
 
 class ValidateResponse(object):
